@@ -28,7 +28,7 @@ def exibir_lista():
     if not lista_compras:
         print("\n[ Sua lista de compras está vazia. ]\n")
     else:
-        print("\n📋 PRODUTOS NA LISTA:")
+        print("\nPRODUTOS NA LISTA:")
         print("-" * 60)
         print(f"{'ID':<5} {'Nome':<20} {'Qtd':<8} {'Unidade':<15} {'Descrição'}")
         print("-" * 60)
@@ -59,7 +59,7 @@ def adicionar_produto():
 
     nome = input("Nome do produto: ").strip()
     if not nome:
-        print("❌ Erro: O nome do produto não pode estar vazio.")
+        print("Erro: O nome do produto não pode estar vazio.")
         return
 
     print("\nUnidades de medida disponíveis:")
@@ -68,7 +68,7 @@ def adicionar_produto():
 
     opcao_unidade = input("Escolha a unidade de medida (1-7): ").strip()
     if opcao_unidade not in UNIDADES:
-        print("❌ Erro: Opção de unidade inválida.")
+        print("Erro: Opcao de unidade invalida.")
         return
     unidade = UNIDADES[opcao_unidade]
 
@@ -78,7 +78,7 @@ def adicionar_produto():
         if quantidade <= 0:
             raise ValueError
     except ValueError:
-        print("❌ Erro: Quantidade inválida. Insira um número positivo.")
+        print("Erro: Quantidade invalida. Insira um numero positivo.")
         return
 
     descricao = input("Descrição (opcional): ").strip()
@@ -95,50 +95,50 @@ def adicionar_produto():
 
     lista_compras.append(produto)
     proximo_id += 1
-    print(f"\n✅ Produto '{nome}' adicionado com sucesso! (ID: {produto['id']})")
+    print(f"\nProduto '{nome}' adicionado com sucesso! (ID: {produto['id']})")
 
 
 def remover_produto():
     print("\n--- REMOVER PRODUTO ---")
 
     if not lista_compras:
-        print("⚠️  A lista está vazia. Nenhum produto para remover.")
+        print("A lista esta vazia. Nenhum produto para remover.")
         return
 
     id_str = input("Digite o ID do produto que deseja remover: ").strip()
     try:
         id_busca = int(id_str)
     except ValueError:
-        print("❌ Erro: ID inválido. Insira um número inteiro.")
+        print("Erro: ID invalido. Insira um numero inteiro.")
         return
 
     for produto in lista_compras:
         if produto["id"] == id_busca:
             lista_compras.remove(produto)
-            print(f"\n✅ Produto '{produto['nome']}' (ID: {id_busca}) removido com sucesso!")
+            print(f"\nProduto '{produto['nome']}' (ID: {id_busca}) removido com sucesso!")
             return
 
-    print(f"❌ Erro: Nenhum produto encontrado com o ID {id_busca}.")
+    print(f"Erro: Nenhum produto encontrado com o ID {id_busca}.")
 
 
 def pesquisar_produtos():
     print("\n--- PESQUISAR PRODUTOS ---")
 
     if not lista_compras:
-        print("⚠️  A lista está vazia. Nenhum produto para pesquisar.")
+        print("A lista esta vazia. Nenhum produto para pesquisar.")
         return
 
     termo = input("Digite o nome ou parte do nome do produto: ").strip().lower()
     if not termo:
-        print("❌ Erro: O termo de pesquisa não pode estar vazio.")
+        print("Erro: O termo de pesquisa nao pode estar vazio.")
         return
 
     resultados = [p for p in lista_compras if termo in p["nome"].lower()]
 
     if not resultados:
-        print(f"\n🔍 Nenhum produto encontrado com o termo '{termo}'.")
+        print(f"\nNenhum produto encontrado com o termo '{termo}'.")
     else:
-        print(f"\n🔍 {len(resultados)} produto(s) encontrado(s) para '{termo}':")
+        print(f"\n{len(resultados)} produto(s) encontrado(s) para '{termo}':")
         print("-" * 60)
         print(f"{'ID':<5} {'Nome':<20} {'Qtd':<8} {'Unidade':<15} {'Descrição'}")
         print("-" * 60)
@@ -169,10 +169,10 @@ def main():
         elif opcao == "3":
             pesquisar_produtos()
         elif opcao == "4":
-            print("\n👋 Encerrando o programa. Até logo!\n")
+            print("\nEncerrando o programa. Ate logo!\n")
             break
         else:
-            print("❌ Opção inválida. Por favor, escolha entre 1 e 4.")
+            print("Opcao invalida. Por favor, escolha entre 1 e 4.")
 
         input("\nPressione Enter para continuar...")
 
